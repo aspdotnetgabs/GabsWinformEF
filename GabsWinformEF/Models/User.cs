@@ -20,13 +20,4 @@ namespace GabsWinformEF.Models
         public bool IsActive { get; set; } = true;
         public DateTime? LastLogin { get; set; }
     }
-
-    class PasswordValidation
-    {
-        public string Password { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
-        public bool ValidationStatus { get; set; }
-        public string ValidationMessage { get; set; }
-    }
 }

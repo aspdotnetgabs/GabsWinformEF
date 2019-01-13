@@ -77,11 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\UserRepository.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="DataBindingDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="DataBindingDemo.Designer.cs">
+      <DependentUpon>DataBindingDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201812091714069_initMig.cs" />
     <Compile Include="Migrations\201812091714069_initMig.Designer.cs">
@@ -101,9 +101,6 @@
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812091714069_initMig.resx">
       <DependentUpon>201812091714069_initMig.cs</DependentUpon>
     </EmbeddedResource>
