@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GabsWinformEF.DAL;
+using GabsWinformEF.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,18 @@ namespace GabsWinformEF
         public DataBindingDemo()
         {
             InitializeComponent();
+        }
+
+        private void DataBindingDemo_Load(object sender, EventArgs e)
+        {
+            userBindingSource.DataSource = UserRepository.GetAll().Select(s => new UserViewModel
+            {
+                Id = s.Id,
+                Email = s.Email,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Phone = s.Phone
+            }).ToList();
         }
     }
 }

@@ -98,9 +98,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DataBindingDemo.resx">
+      <DependentUpon>DataBindingDemo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812091714069_initMig.resx">
       <DependentUpon>201812091714069_initMig.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +123,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\GabsWinformEF.DAL.UserRepository.datasource" />
+    <None Include="Properties\DataSources\GabsWinformEF.Models.UserViewModel.datasource" />
     <None Include="_App.config">
       <SubType>Designer</SubType>
     </None>
