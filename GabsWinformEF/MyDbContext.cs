@@ -10,11 +10,12 @@ namespace GabsWinformEF
 {
     class MyDbContext : DbContext
     {
-        public MyDbContext() : base("DbConnSqlServerSomee")
+        public MyDbContext() : base("DbConnDbJetAccess")
         {
 
         }
 
-        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }
