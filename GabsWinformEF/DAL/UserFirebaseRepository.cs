@@ -3,6 +3,7 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using GabsWinformEF.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,8 +80,7 @@ namespace GabsWinformEF.DAL
 
             try
             {
-                FirebaseResponse responseGet = await _client.GetAsync(_firebaseEndpoint);
-                var users = responseGet.ResultAs<List<User>>(); //The response will contain the data being retreived
+                var users = GetAll();
                 var userExists = users.Where(x => x.Email == user.Email).Count() > 0;
                 if (userExists)
                 {
@@ -104,7 +104,7 @@ namespace GabsWinformEF.DAL
             user.Id = Guid.NewGuid();
             user.IsActive = true;
 
-            SetResponse responseSet = await _client.SetAsync(_firebaseEndpoint, user);
+            SetResponse responseSet = await _client.SetAsync(_firebaseEndpoint + "/" + user.Id, user);
             var userResult = responseSet.ResultAs<User>();
 
             return userResult;
@@ -142,23 +142,30 @@ namespace GabsWinformEF.DAL
             return user;
         }
 
-        public  List<User> GetAll()
+        public List<User> GetAll()
         {
-            var users = _db.Users.ToList();
+            FirebaseResponse responseGet = _client.GetAsync(_firebaseEndpoint).Result;
+            var result = responseGet.ResultAs<Dictionary<string,User>>(); //The response will contain the data being retreived
+            var users = result.Select(s => s.Value).ToList();
             return users;
         }
 
-        public  User GetUserById(Guid userId)
+        public IFirebaseClient GetFirebaseClient()
         {
-            var user = _db.Users.Find(userId);
-            return user;
+            return _client;
         }
 
-        public  User GetUserByEmail(string userEmail)
+        public static async Task<EventStreamResponse> Listen(IFirebaseClient _client, string _firebaseEndpoint)
         {
-            var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
-            return user;
+            return await _client.OnAsync(_firebaseEndpoint, (sender, args, context) => {
+                //DataBindingDemo.RefreshDatagrid();
+                MessageBox.Show("Refresh pls..");
+            });
         }
 
+        public void StopListening(EventStreamResponse eventResponse)
+        {
+            eventResponse.Dispose();
+        }
     }
 }

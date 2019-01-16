@@ -33,6 +33,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -57,20 +63,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtApiKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.tab3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -110,6 +110,40 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(571, 215);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            // 
+            // emailDataGridViewTextBoxColumn1
+            // 
+            this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
+            // 
+            // firstNameDataGridViewTextBoxColumn1
+            // 
+            this.firstNameDataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn1.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn1.Name = "firstNameDataGridViewTextBoxColumn1";
+            // 
+            // lastNameDataGridViewTextBoxColumn1
+            // 
+            this.lastNameDataGridViewTextBoxColumn1.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn1.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn1.Name = "lastNameDataGridViewTextBoxColumn1";
+            // 
+            // phoneDataGridViewTextBoxColumn1
+            // 
+            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(GabsWinformEF.Models.UserViewModel);
             // 
             // tabPage2
             // 
@@ -328,7 +362,7 @@
             this.txtApiKey.Name = "txtApiKey";
             this.txtApiKey.Size = new System.Drawing.Size(380, 20);
             this.txtApiKey.TabIndex = 1;
-            this.txtApiKey.Text = "AIzaSyDVN6xbJMQjm9_o3uZemQxEqopiLPUXFpk";
+            this.txtApiKey.Text = "NYMI0Ko6jsOJRfXh0aGlBEUnd8Z5mwt9iHaeYXV9";
             // 
             // label1
             // 
@@ -338,40 +372,6 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "apiKey: ";
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            // 
-            // emailDataGridViewTextBoxColumn1
-            // 
-            this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
-            // 
-            // firstNameDataGridViewTextBoxColumn1
-            // 
-            this.firstNameDataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn1.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn1.Name = "firstNameDataGridViewTextBoxColumn1";
-            // 
-            // lastNameDataGridViewTextBoxColumn1
-            // 
-            this.lastNameDataGridViewTextBoxColumn1.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn1.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn1.Name = "lastNameDataGridViewTextBoxColumn1";
-            // 
-            // phoneDataGridViewTextBoxColumn1
-            // 
-            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(GabsWinformEF.Models.UserViewModel);
             // 
             // DataBindingDemo
             // 
@@ -386,6 +386,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -393,7 +394,6 @@
             this.bindingNavigator1.PerformLayout();
             this.tab3.ResumeLayout(false);
             this.tab3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

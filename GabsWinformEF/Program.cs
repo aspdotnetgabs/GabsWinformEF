@@ -8,6 +8,10 @@ namespace GabsWinformEF
 {
     static class Program
     {
+
+        public static string FirebaseApiKey;
+        public static string FirebaseDatabaseURL;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
