@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Girlfriend.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="MyDbContext.cs" />

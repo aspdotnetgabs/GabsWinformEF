@@ -19,6 +19,9 @@ namespace GabsWinformEF
             InitializeComponent();
         }
 
+        private List<Girlfriend> girlfriends = new List<Girlfriend>();
+
+
         private void DataBindingDemo_Load(object sender, EventArgs e)
         {
             userBindingSource.DataSource = UserRepository.GetAll().Select(s => new UserViewModel
@@ -29,6 +32,46 @@ namespace GabsWinformEF
                 LastName = s.LastName,
                 Phone = s.Phone
             }).ToList();
+
+            tsUserSelect.ComboBox.DataSource = userBindingSource;
+            tsUserSelect.ComboBox.ValueMember = "Id";
+            tsUserSelect.ComboBox.DisplayMember = "FullName";
+        }
+
+        private void cboUserSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGFs_Click(object sender, EventArgs e)
+        {
+
+            var g1 = new Girlfriend();
+            g1.Id = 1;
+            g1.Name = "Lanie";
+            g1.Facebook = "lanz";
+            g1.Phone = "099987483";
+            girlfriends.Add(g1);
+
+            var g2 = new Girlfriend();
+            g2.Id = 2;
+            g2.Name = "Anna";
+            g2.Phone = "2447656565";
+            girlfriends.Add(g2);
+
+            gfDropdown.DataSource = girlfriends;
+            gfDropdown.ValueMember = "Id";
+            gfDropdown.DisplayMember = "Name";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var g3 = new Girlfriend();
+            g3.Id = int.Parse(txtId.Text);
+            g3.Name = txtName.Text;
+            g3.Phone = txtPhone.Text;
+            girlfriends.Add(g3);
+            gfDropdown.Refresh();
         }
     }
 }
