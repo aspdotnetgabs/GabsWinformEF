@@ -1,4 +1,7 @@
-﻿using GabsWinformEF.DAL;
+﻿using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using GabsWinformEF.DAL;
 using GabsWinformEF.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +32,13 @@ namespace GabsWinformEF
                 LastName = s.LastName,
                 Phone = s.Phone
             }).ToList();
+        }
+
+        private void btnFirebaseConnect_Click(object sender, EventArgs e)
+        {
+            var userFirebaseRepo = 
+                new UserFirebaseRepository(txtApiKey.Text, txtDatabaseURL.Text, "users");
+            userFirebaseRepo.Create()
         }
     }
 }
