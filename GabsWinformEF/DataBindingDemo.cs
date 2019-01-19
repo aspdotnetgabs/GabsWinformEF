@@ -27,6 +27,7 @@ namespace GabsWinformEF
 
         private void DataBindingDemo_Load(object sender, EventArgs e)
         {
+   
         }
 
         public static IFirebaseClient RefreshDatagrid()
@@ -36,6 +37,7 @@ namespace GabsWinformEF
                 var userFirebaseRepo =
                     new UserFirebaseRepository(Program.FirebaseApiKey, Program.FirebaseDatabaseURL, "users");
 
+            
 
                 _instance.userBindingSource.DataSource = userFirebaseRepo.GetAll().Select(s => new UserViewModel
                 {
@@ -67,6 +69,12 @@ namespace GabsWinformEF
 
             var login = new Login();
             login.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var cocForm = new CocUserForm();
+            cocForm.Show();
         }
     }
 }

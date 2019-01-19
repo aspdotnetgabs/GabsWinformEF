@@ -99,6 +99,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\COCUser.cs" />
+    <Compile Include="CocUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CocUserForm.Designer.cs">
+      <DependentUpon>CocUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\UserFirebaseRepository.cs" />
     <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="DataBindingDemo.cs">
@@ -132,6 +139,9 @@
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CocUserForm.resx">
+      <DependentUpon>CocUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataBindingDemo.resx">
       <DependentUpon>DataBindingDemo.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +167,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\GabsWinformEF.DAL.UserRepository.datasource" />
+    <None Include="Properties\DataSources\GabsWinformEF.Models.COCUser.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.UserViewModel.datasource" />
     <None Include="_App.config">
       <SubType>Designer</SubType>
