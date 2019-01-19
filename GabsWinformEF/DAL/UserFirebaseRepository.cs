@@ -155,12 +155,26 @@ namespace GabsWinformEF.DAL
             return _client;
         }
 
-        public static async Task<EventStreamResponse> Listen(IFirebaseClient _client, string _firebaseEndpoint)
+        public static async Task<EventStreamResponse> Listen(IFirebaseClient firebaseClient, string firebaseEndpoint)
         {
-            return await _client.OnAsync(_firebaseEndpoint, (sender, args, context) => {
-                //DataBindingDemo.RefreshDatagrid();
-                MessageBox.Show("Refresh pls..");
+            EventStreamResponse response = await firebaseClient.OnAsync(firebaseEndpoint,
+            added: (sender, args, d) =>
+            {
+                //Debug.WriteLine("ADDED " + args.Data + " -> 2\n");
+            },
+            changed: (sender, args, d) =>
+            {
+                //Debug.WriteLine("CHANGED " + args.Data);
+            },
+            removed: (sender, arg, ds) =>
+            {
+                // Debug.WriteLine("REMOVED " + args.Path);
             });
+
+            return response;
+
+            //Call dispose to stop listening for events
+            //response.Dispose();
         }
 
         public void StopListening(EventStreamResponse eventResponse)
