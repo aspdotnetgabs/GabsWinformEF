@@ -97,18 +97,18 @@
             // 
             this.txtBrand.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceCar, "Brand", true));
             this.txtBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrand.Location = new System.Drawing.Point(631, 77);
+            this.txtBrand.Location = new System.Drawing.Point(634, 77);
             this.txtBrand.Name = "txtBrand";
-            this.txtBrand.Size = new System.Drawing.Size(117, 26);
+            this.txtBrand.Size = new System.Drawing.Size(138, 26);
             this.txtBrand.TabIndex = 3;
             // 
             // txtModel
             // 
             this.txtModel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceCar, "Model", true));
             this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(631, 109);
+            this.txtModel.Location = new System.Drawing.Point(634, 109);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(117, 26);
+            this.txtModel.Size = new System.Drawing.Size(138, 26);
             this.txtModel.TabIndex = 5;
             // 
             // label2
@@ -135,9 +135,9 @@
             // 
             this.txtColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceCar, "Color", true));
             this.txtColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColor.Location = new System.Drawing.Point(631, 176);
+            this.txtColor.Location = new System.Drawing.Point(634, 176);
             this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(117, 26);
+            this.txtColor.Size = new System.Drawing.Size(138, 26);
             this.txtColor.TabIndex = 9;
             // 
             // label4
@@ -155,17 +155,17 @@
             this.comboCarType.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bindingSourceCar, "Type", true));
             this.comboCarType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboCarType.FormattingEnabled = true;
-            this.comboCarType.Location = new System.Drawing.Point(631, 142);
+            this.comboCarType.Location = new System.Drawing.Point(634, 142);
             this.comboCarType.Name = "comboCarType";
-            this.comboCarType.Size = new System.Drawing.Size(117, 28);
+            this.comboCarType.Size = new System.Drawing.Size(138, 28);
             this.comboCarType.TabIndex = 10;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(631, 212);
+            this.btnSave.Location = new System.Drawing.Point(634, 212);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(95, 35);
+            this.btnSave.Size = new System.Drawing.Size(138, 35);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -175,9 +175,10 @@
             // 
             this.txtCarId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceCar, "Id", true));
             this.txtCarId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCarId.Location = new System.Drawing.Point(631, 45);
+            this.txtCarId.Location = new System.Drawing.Point(634, 45);
             this.txtCarId.Name = "txtCarId";
-            this.txtCarId.Size = new System.Drawing.Size(117, 26);
+            this.txtCarId.ReadOnly = true;
+            this.txtCarId.Size = new System.Drawing.Size(138, 26);
             this.txtCarId.TabIndex = 14;
             // 
             // label5
@@ -215,7 +216,7 @@
             this.bindingNavigatorCar.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorCar.Name = "bindingNavigatorCar";
             this.bindingNavigatorCar.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorCar.Size = new System.Drawing.Size(771, 25);
+            this.bindingNavigatorCar.Size = new System.Drawing.Size(795, 25);
             this.bindingNavigatorCar.TabIndex = 15;
             this.bindingNavigatorCar.Text = "bindingNavigator1";
             // 
@@ -227,6 +228,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -243,6 +245,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bindingNavigatorDeleteItem_MouseDown);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -306,6 +309,7 @@
             // 
             // bindingSourceCar
             // 
+            this.bindingSourceCar.AllowNew = true;
             this.bindingSourceCar.DataSource = typeof(GabsWinformEF.Car);
             // 
             // idDataGridViewTextBoxColumn
@@ -342,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 282);
+            this.ClientSize = new System.Drawing.Size(795, 282);
             this.Controls.Add(this.bindingNavigatorCar);
             this.Controls.Add(this.txtCarId);
             this.Controls.Add(this.label5);
@@ -357,7 +361,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2Firebase";
-            this.Text = "Car Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Car Form [Firebase Real-time Database]";
             this.Load += new System.EventHandler(this.Form2Firebase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorCar)).EndInit();
@@ -384,11 +389,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtCarId;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingNavigator bindingNavigatorCar;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -401,5 +401,10 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
     }
 }

@@ -25,7 +25,7 @@ namespace GabsWinformEF
         private IFirebaseClient _firebaseClient;
         private string _firebaseEndpoint = "Cars";
         private List<CarType> carTypes = new List<CarType>();
-
+        private bool insertMode = false;
 
         private void Form2Firebase_Load(object sender, EventArgs e)
         {
@@ -48,10 +48,11 @@ namespace GabsWinformEF
             if(_firebaseClient != null)
             {
                 FirebaseResponse responseGet = await _firebaseClient.GetAsync(_firebaseEndpoint);
-                var result = responseGet.ResultAs<List<Car>>(); 
+                var result = responseGet.ResultAs<Dictionary<string, Car>>(); 
                 if(result != null)
                 {
-                    var cars = result; // result.Select(s => s.Value).ToList();
+                    var cars = result.Select(s => s.Value).ToList(); ; // result.Select(s => s.Value).ToList();
+                    bindingSourceCar.Clear();
                     bindingSourceCar.DataSource = cars;
                 }
                 else
@@ -62,7 +63,10 @@ namespace GabsWinformEF
                     car1.Model = "Wigo";
                     car1.Type = 1;
                     car1.Color = "Red";
-                    SetResponse response = await _firebaseClient.SetAsync(_firebaseEndpoint + "/" + car1.Id.ToString(), car1);
+                    var responseSet = await _firebaseClient.SetAsync(_firebaseEndpoint + "/c" + car1.Id.ToString(), car1);
+                    var res = responseSet.ResultAs<Car>();
+                    UpdateNewCarId(res.Id);
+                    GetCarsFromFirebase();
                 }
             }
 
@@ -85,26 +89,54 @@ namespace GabsWinformEF
             comboCarType.ValueMember = "Id";
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void UpdateNewCarId(int currentId)
         {
-            // Save to database...
+            // Increment Id by 1
+            var newCarIdGen = new CarIdGenerator();
+            newCarIdGen.Id = currentId + 1;
+            await _firebaseClient.SetAsync("_Ids/" + _firebaseEndpoint, newCarIdGen);
         }
 
-        private async void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
-            bindingSourceCar.Add(new Car());
-
-            var responseGet = await _firebaseClient.GetAsync("_Ids" + _firebaseEndpoint);
-            if(responseGet != null)
+            Car newCar = bindingSourceCar.Current as Car;
+            if(newCar != null)
             {
-                var result = responseGet.ResultAs<CarType>();
-                txtCarId.Text = result.Id.ToString();
+                var responseSet = await _firebaseClient.SetAsync(_firebaseEndpoint + "/c" + newCar.Id.ToString(), newCar);
+                var result = responseSet.ResultAs<Car>();
+                if (result != null)
+                {
+                    MessageBox.Show("Successfully saved to Firebase.");
+                    if (insertMode)
+                    {
+                        UpdateNewCarId(result.Id);
+                        insertMode = false;
+                    }
+                }
+                else
+                    MessageBox.Show("Error saving the data to Firebase.");
             }
+        }
+
+        private async void bindingNavigatorDeleteItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            var delCar = bindingSourceCar.Current as Car;
+            var responseDel = await _firebaseClient.DeleteAsync(_firebaseEndpoint + "/c" + delCar.Id);
+            if (responseDel.StatusCode != System.Net.HttpStatusCode.OK)
+                MessageBox.Show("Deletion failed.");
+        }
+
+        private async void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            var responseGet = await _firebaseClient.GetAsync("_Ids/" + _firebaseEndpoint);
+            var result = responseGet.ResultAs<CarType>();
+            if (result != null)
+                txtCarId.Text = result.Id.ToString();
             else
                 txtCarId.Text = "1";
 
             txtCarId.Focus();
-
+            insertMode = true;
         }
     }
 }
