@@ -43,16 +43,26 @@ namespace GabsWinformEF
             LoadInitialCarTypes();
         }
 
-        private void GetCarsFromFirebase()
+        private async void GetCarsFromFirebase()
         {
             if(_firebaseClient != null)
             {
-                FirebaseResponse responseGet = _firebaseClient.GetAsync(_firebaseEndpoint).Result;
-                var result = responseGet.ResultAs<Dictionary<string, Car>>(); 
+                FirebaseResponse responseGet = await _firebaseClient.GetAsync(_firebaseEndpoint);
+                var result = responseGet.ResultAs<List<Car>>(); 
                 if(result != null)
                 {
-                    var cars = result.Select(s => s.Value).ToList();
+                    var cars = result; // result.Select(s => s.Value).ToList();
                     bindingSourceCar.DataSource = cars;
+                }
+                else
+                {
+                    Car car1 = new Car();
+                    car1.Id = 1;
+                    car1.Brand = "Toyota";
+                    car1.Model = "Wigo";
+                    car1.Type = 1;
+                    car1.Color = "Red";
+                    SetResponse response = await _firebaseClient.SetAsync(_firebaseEndpoint + "/" + car1.Id.ToString(), car1);
                 }
             }
 
@@ -80,8 +90,20 @@ namespace GabsWinformEF
             // Save to database...
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        private async void bindingNavigatorAddNewItem_Click_1(object sender, EventArgs e)
         {
+            bindingSourceCar.Add(new Car());
+
+            var responseGet = await _firebaseClient.GetAsync("_Ids" + _firebaseEndpoint);
+            if(responseGet != null)
+            {
+                var result = responseGet.ResultAs<CarType>();
+                txtCarId.Text = result.Id.ToString();
+            }
+            else
+                txtCarId.Text = "1";
+
+            txtCarId.Focus();
 
         }
     }
