@@ -8,10 +8,6 @@ namespace GabsWinformEF
 {
     static class Program
     {
-
-        public static string FirebaseApiKey;
-        public static string FirebaseDatabaseURL;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,7 +16,7 @@ namespace GabsWinformEF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CocUserForm());
+            Application.Run(new Form1());
         }
     }
 }

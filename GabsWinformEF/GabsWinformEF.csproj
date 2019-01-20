@@ -99,63 +99,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\COCUser.cs" />
-    <Compile Include="CocUserForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CocUserForm.Designer.cs">
-      <DependentUpon>CocUserForm.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\UserFirebaseRepository.cs" />
-    <Compile Include="DAL\UserRepository.cs" />
-    <Compile Include="DataBindingDemo.cs">
+    <Compile Include="Car.cs" />
+    <Compile Include="Form2Firebase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataBindingDemo.Designer.cs">
-      <DependentUpon>DataBindingDemo.cs</DependentUpon>
+    <Compile Include="Form2Firebase.Designer.cs">
+      <DependentUpon>Form2Firebase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812091714069_initMig.cs" />
-    <Compile Include="Migrations\201812091714069_initMig.Designer.cs">
-      <DependentUpon>201812091714069_initMig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901131121388_UserReg.cs" />
-    <Compile Include="Migrations\201901131121388_UserReg.Designer.cs">
-      <DependentUpon>201901131121388_UserReg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901131138255_lastlogin.cs" />
-    <Compile Include="Migrations\201901131138255_lastlogin.Designer.cs">
-      <DependentUpon>201901131138255_lastlogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserViewModel.cs" />
-    <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CocUserForm.resx">
-      <DependentUpon>CocUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataBindingDemo.resx">
-      <DependentUpon>DataBindingDemo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812091714069_initMig.resx">
-      <DependentUpon>201812091714069_initMig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901131121388_UserReg.resx">
-      <DependentUpon>201901131121388_UserReg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901131138255_lastlogin.resx">
-      <DependentUpon>201901131138255_lastlogin.cs</DependentUpon>
+    <EmbeddedResource Include="Form2Firebase.resx">
+      <DependentUpon>Form2Firebase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -166,6 +129,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Car.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.DAL.UserRepository.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.COCUser.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.UserViewModel.datasource" />
@@ -189,11 +153,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="MyDb.mdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
