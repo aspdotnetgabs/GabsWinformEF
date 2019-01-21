@@ -94,9 +94,27 @@ namespace GabsWinformEF
         {
             if(!string.IsNullOrEmpty(txtTotal.Text) && !string.IsNullOrEmpty(txtCash.Text))
             {
-                double change = double.Parse(txtCash.Text) - double.Parse(txtTotal.Text);
-                string formattedChange = String.Format("{0:c}", change);
-                MessageBox.Show("Your change is " + formattedChange  + ". \n\nThank you for shopping with us.");
+                double total = double.Parse(txtTotal.Text);
+                double cash = double.Parse(txtCash.Text);
+                if(cash >= total)
+                {
+                    double change = cash - total;
+                    string formattedChange = String.Format("{0:c}", change);
+                    MessageBox.Show("Your change is " + formattedChange + ". \n\nThank you for shopping with us.");
+
+                    ClearTextBoxes();
+
+                    txtTotal.Text = "0";
+                    txtCash.Text = string.Empty;
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Kulang imong bayad!");
+                    txtCash.Focus();
+                }
+
             }
         }
     }
