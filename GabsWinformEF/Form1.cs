@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,8 @@ namespace GabsWinformEF
                     string formattedChange = String.Format("{0:c}", change);
                     MessageBox.Show("Your change is " + formattedChange + ". \n\nThank you for shopping with us.");
 
+                    WriteCSVFile();
+
                     ClearTextBoxes();
 
                     txtTotal.Text = "0";
@@ -115,6 +118,25 @@ namespace GabsWinformEF
                     txtCash.Focus();
                 }
 
+            }
+        }
+
+        private void WriteCSVFile()
+        {
+            using (StreamWriter writer = new StreamWriter("transaction.csv", true))
+            {
+                string delimiter = "|"; // or pipe | or comma ,
+
+                var transactionItems = (BindingList<POSItem>) bindingSource1.List;
+                var total = 0.00d;
+                writer.WriteLine($"Item{delimiter}Quantity{delimiter}Price{delimiter}Amount");
+                foreach (var item in transactionItems)
+                {
+                    writer.WriteLine($"\"{item.ItemName}\"{delimiter}\"{item.Quantity}\"{delimiter}\"{item.Price}\"{delimiter}\"{item.Amount}\"");
+                    total += item.Amount;
+                }
+                writer.WriteLine($"Total: {delimiter}{delimiter}{delimiter}{total}");
+                writer.WriteLine("===============");
             }
         }
     }
