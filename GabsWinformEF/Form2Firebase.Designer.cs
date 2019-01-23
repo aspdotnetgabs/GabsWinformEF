@@ -55,12 +55,14 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.bindingSourceCar = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBoxJson = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorCar)).BeginInit();
             this.bindingNavigatorCar.SuspendLayout();
@@ -342,11 +344,20 @@
             this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
             // 
+            // listBoxJson
+            // 
+            this.listBoxJson.FormattingEnabled = true;
+            this.listBoxJson.Location = new System.Drawing.Point(12, 274);
+            this.listBoxJson.Name = "listBoxJson";
+            this.listBoxJson.Size = new System.Drawing.Size(760, 95);
+            this.listBoxJson.TabIndex = 16;
+            // 
             // Form2Firebase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 282);
+            this.ClientSize = new System.Drawing.Size(795, 374);
+            this.Controls.Add(this.listBoxJson);
             this.Controls.Add(this.bindingNavigatorCar);
             this.Controls.Add(this.txtCarId);
             this.Controls.Add(this.label5);
@@ -406,5 +417,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ListBox listBoxJson;
     }
 }

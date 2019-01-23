@@ -7,13 +7,13 @@ namespace GabsWinformEF
         public int Id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public string Color { get; set; }
     }
 
     class CarType
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Type { get; set; }
     }
 

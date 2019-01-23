@@ -31,7 +31,7 @@ namespace GabsWinformEF
             car1.Id = 1;
             car1.Brand = "Toyota";
             car1.Model = "Wigo";
-            car1.Type = 1;
+            car1.Type = "1";
             car1.Color = "Red";
             // Binding source is a collection type. It's the same as List.
             bindingSourceCar.Add(car1);
@@ -40,7 +40,7 @@ namespace GabsWinformEF
             car2.Id = 2;
             car2.Brand = "Isuzu";
             car2.Model = "Mux";
-            car2.Type = 2;
+            car2.Type = "2";
             car2.Color = "Gray";
             bindingSourceCar.Add(car2);
         }
@@ -48,12 +48,12 @@ namespace GabsWinformEF
         private void LoadInitialCarTypes()
         {
             var carType1 = new CarType();
-            carType1.Id = 1;
+            carType1.Id = "1";
             carType1.Type = "Hatchback";
             carTypes.Add(carType1);
 
             var carType2 = new CarType();
-            carType2.Id = 2;
+            carType2.Id = "2";
             carType2.Type = "SUV";
             carTypes.Add(carType2);
 
