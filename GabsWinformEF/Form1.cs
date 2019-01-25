@@ -67,10 +67,5 @@ namespace GabsWinformEF
         {
             // Save to database...
         }
-
-        private void btnFirebase_Click(object sender, EventArgs e)
-        {
-            new Form2Firebase().Show();
-        }
     }
 }
