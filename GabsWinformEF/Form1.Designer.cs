@@ -58,6 +58,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboCarType = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnFirebase = new System.Windows.Forms.Button();
             this.txtCarId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -318,6 +319,16 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnFirebase
+            // 
+            this.btnFirebase.Location = new System.Drawing.Point(12, 274);
+            this.btnFirebase.Name = "btnFirebase";
+            this.btnFirebase.Size = new System.Drawing.Size(212, 24);
+            this.btnFirebase.TabIndex = 12;
+            this.btnFirebase.Text = "Try with Firebase real-time database";
+            this.btnFirebase.UseVisualStyleBackColor = true;
+            this.btnFirebase.Click += new System.EventHandler(this.btnFirebase_Click);
+            // 
             // txtCarId
             // 
             this.txtCarId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceCar, "Id", true));
@@ -344,6 +355,7 @@
             this.ClientSize = new System.Drawing.Size(771, 303);
             this.Controls.Add(this.txtCarId);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnFirebase);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.comboCarType);
             this.Controls.Add(this.txtColor);
@@ -393,6 +405,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboCarType;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnFirebase;
         private System.Windows.Forms.TextBox txtCarId;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
