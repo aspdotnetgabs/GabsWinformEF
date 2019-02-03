@@ -16,7 +16,7 @@ namespace GabsWinformEF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPOS());
+            Application.Run(new Form1());
         }
     }
 }
