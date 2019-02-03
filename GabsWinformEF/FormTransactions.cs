@@ -50,12 +50,16 @@ namespace GabsWinformEF
                         {
                             https://stackoverflow.com/questions/5168592/force-a-string-to-2-decimal-places
                             row.Price = string.Format("{0:f2}", double.Parse(column[2]));
-                            row.Amount = string.Format("{0:f2}", double.Parse(column[3]));
                         }
                         catch
                         {
                             // Just do nothing
                         }
+                        try
+                        {
+                            row.Amount = string.Format("{0:f2}", double.Parse(column[3]));
+                        }
+                        catch { }
 
                         bindingSource1.List.Add(row);
                     }
