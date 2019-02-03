@@ -30,25 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboItemName = new System.Windows.Forms.ComboBox();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtCash = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -68,23 +69,15 @@
             this.dataGridView1.Size = new System.Drawing.Size(443, 287);
             this.dataGridView1.TabIndex = 0;
             // 
-            // itemNameDataGridViewTextBoxColumn
+            // label1
             // 
-            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.HeaderText = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(468, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "TOTAL: ";
             // 
             // amountDataGridViewTextBoxColumn
             // 
@@ -92,9 +85,23 @@
             this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
             this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
             // 
-            // bindingSource1
+            // priceDataGridViewTextBoxColumn
             // 
-            this.bindingSource1.DataSource = typeof(GabsWinformEF.POSItem);
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // itemNameDataGridViewTextBoxColumn
+            // 
+            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
+            this.itemNameDataGridViewTextBoxColumn.HeaderText = "ItemName";
+            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
             // 
             // txtTotal
             // 
@@ -107,26 +114,6 @@
             this.txtTotal.Text = "0";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(468, 203);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "TOTAL: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(468, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "QTY: ";
-            // 
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -138,15 +125,15 @@
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             // 
-            // label3
+            // label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(468, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "PRICE: ";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(468, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "QTY: ";
             // 
             // txtPrice
             // 
@@ -157,15 +144,15 @@
             this.txtPrice.TabIndex = 5;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(468, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "AMOUNT: ";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(468, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "PRICE: ";
             // 
             // txtAmount
             // 
@@ -176,6 +163,16 @@
             this.txtAmount.Size = new System.Drawing.Size(167, 26);
             this.txtAmount.TabIndex = 7;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(468, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "AMOUNT: ";
             // 
             // label5
             // 
@@ -208,6 +205,15 @@
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // txtCash
+            // 
+            this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCash.Location = new System.Drawing.Point(556, 232);
+            this.txtCash.Name = "txtCash";
+            this.txtCash.Size = new System.Drawing.Size(167, 26);
+            this.txtCash.TabIndex = 12;
+            this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -217,15 +223,6 @@
             this.label6.Size = new System.Drawing.Size(62, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "CASH: ";
-            // 
-            // txtCash
-            // 
-            this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(556, 232);
-            this.txtCash.Name = "txtCash";
-            this.txtCash.Size = new System.Drawing.Size(167, 26);
-            this.txtCash.TabIndex = 12;
-            this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnPay
             // 
@@ -238,11 +235,26 @@
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
+            // btnReport
+            // 
+            this.btnReport.Location = new System.Drawing.Point(13, 306);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(127, 23);
+            this.btnReport.TabIndex = 15;
+            this.btnReport.Text = "View Transactions";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(GabsWinformEF.POSItem);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 322);
+            this.ClientSize = new System.Drawing.Size(744, 341);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCash);
@@ -271,25 +283,26 @@
 
         #endregion
 
-        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboItemName;
         private System.Windows.Forms.Button btnAddItem;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCash;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPay;
+        private System.Windows.Forms.Button btnReport;
     }
 }

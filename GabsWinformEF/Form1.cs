@@ -120,5 +120,9 @@ namespace GabsWinformEF
             }
         }
 
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            new FormTransactions().Show();
+        }
     }
 }

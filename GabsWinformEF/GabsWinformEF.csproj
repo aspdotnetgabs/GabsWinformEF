@@ -81,6 +81,12 @@
     <Compile Include="FormPOS.Designer.cs">
       <DependentUpon>FormPOS.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransactions.Designer.cs">
+      <DependentUpon>FormTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemPOS.cs" />
     <Compile Include="POSItem.cs" />
     <Compile Include="Program.cs" />
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPOS.resx">
       <DependentUpon>FormPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransactions.resx">
+      <DependentUpon>FormTransactions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +110,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Car.datasource" />
+    <None Include="Properties\DataSources\DgvItem.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.DAL.UserRepository.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.COCUser.datasource" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.UserViewModel.datasource" />
