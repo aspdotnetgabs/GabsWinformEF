@@ -120,6 +120,22 @@ namespace GabsWinformEF
             }
         }
 
+        private void WriteCSVFile(string filename, char delimiter)
+        {
+            using (StreamWriter writer = new StreamWriter(filename, true))
+            {
+                var transactionItems = (IList<POSItem>)bindingSource1.List;
+                var total = 0.00d;
+                writer.WriteLine($"Item{delimiter}Quantity{delimiter}Price{delimiter}Amount");
+                foreach (var item in transactionItems)
+                {
+                    writer.WriteLine($"\"{item.ItemName}\"{delimiter}\"{item.Quantity}\"{delimiter}\"{item.Price}\"{delimiter}\"{item.Amount}\"");
+                    total += item.Amount;
+                }
+                writer.WriteLine($"Total: {delimiter}{delimiter}{delimiter}{total}");
+                writer.WriteLine($"==============={delimiter}{delimiter}{delimiter}");
+            }
+        }
 
 
         private void btnReport_Click(object sender, EventArgs e)
