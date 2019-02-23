@@ -1,5 +1,4 @@
-﻿using GabsWinformEF.DAL;
-using GabsWinformEF.Models;
+﻿using GabsWinformEF.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +20,7 @@ namespace GabsWinformEF
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var valid = UserRepository.Authenticate(txtLoginEmail.Text, txtLoginPassword.Text);
+            var valid = User.Authenticate(txtLoginEmail.Text, txtLoginPassword.Text);
             if(valid)
             {
                 MessageBox.Show("You have successfully logged in.");
@@ -40,7 +39,7 @@ namespace GabsWinformEF
                 newUser.FirstName = txtFirstName.Text;
                 newUser.LastName = txtLastName.Text;
                 newUser.Phone = txtPhone.Text;
-                var user = UserRepository.Create(newUser, txtPassword.Text);
+                var user = User.Create(newUser, txtPassword.Text);
                 if (user != null)
                 {
                     foreach (var textbox in tabRegister.Controls.OfType<TextBox>())
