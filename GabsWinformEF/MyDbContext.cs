@@ -10,7 +10,7 @@ namespace GabsWinformEF
 {
     class MyDbContext : DbContext
     {
-        public MyDbContext() : base("DbConnSqlServerSomee")
+        public MyDbContext() : base("DbConnSqlServerRemote")
         {
 
         }
