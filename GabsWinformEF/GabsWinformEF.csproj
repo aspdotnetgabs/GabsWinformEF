@@ -83,18 +83,6 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812091714069_initMig.cs" />
-    <Compile Include="Migrations\201812091714069_initMig.Designer.cs">
-      <DependentUpon>201812091714069_initMig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901131121388_UserReg.cs" />
-    <Compile Include="Migrations\201901131121388_UserReg.Designer.cs">
-      <DependentUpon>201901131121388_UserReg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901131138255_lastlogin.cs" />
-    <Compile Include="Migrations\201901131138255_lastlogin.Designer.cs">
-      <DependentUpon>201901131138255_lastlogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\User.cs" />
@@ -103,15 +91,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812091714069_initMig.resx">
-      <DependentUpon>201812091714069_initMig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901131121388_UserReg.resx">
-      <DependentUpon>201901131121388_UserReg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901131138255_lastlogin.resx">
-      <DependentUpon>201901131138255_lastlogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,6 +104,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App_.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GabsWinformEF.Models.Contact.datasource" />
     <None Include="Properties\Settings.settings">
@@ -136,11 +116,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="__App.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyDb.mdb">
