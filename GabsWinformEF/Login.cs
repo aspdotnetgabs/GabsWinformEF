@@ -48,7 +48,7 @@ namespace GabsWinformEF
                         textbox.Text = string.Empty;
                     }
                     MessageBox.Show("You have successfully registered. \nUserId: " + user.Id);
-                    // Login for successful registration...
+                    // Logic for successful registration...
                 }
                 else
                     MessageBox.Show("Registration failed.");

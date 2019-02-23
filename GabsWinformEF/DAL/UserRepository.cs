@@ -68,7 +68,6 @@ namespace GabsWinformEF.DAL
                 user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userPassword));
             }
 
-            user.Id = Guid.NewGuid();
             user.IsActive = true;
             _db.Users.Add(user);
             _db.SaveChanges();
@@ -114,7 +113,7 @@ namespace GabsWinformEF.DAL
             return users;
         }
 
-        public static User GetUserById(Guid userId)
+        public static User GetUserById(int userId)
         {
             var user = _db.Users.Find(userId);
             return user;
@@ -129,19 +128,31 @@ namespace GabsWinformEF.DAL
         public static User Deactivate(string userEmail)
         {
             var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
-            user.IsActive = false;
-            _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-            _db.SaveChanges();
-            return user;
+            if (user != null)
+            {
+                user.IsActive = false;
+                _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+                return user;
+            }
+            else
+                return null;
+
         }
 
         public static User Activate(string userEmail)
         {
             var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
-            user.IsActive = true;
-            _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-            _db.SaveChanges();
-            return user;
+            if (user != null)
+            {
+                user.IsActive = true;
+                _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+                return user;
+            }
+            else
+                return null;
+
         }
 
     }

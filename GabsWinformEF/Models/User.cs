@@ -8,14 +8,13 @@ namespace GabsWinformEF.Models
 {
     class User
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         //Login info
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool IsActive { get; set; } = true;
-
         // Profile info
         public string FirstName { get; set; }
         public string LastName { get; set; }
