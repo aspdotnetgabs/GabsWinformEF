@@ -23,7 +23,8 @@ namespace GabsWinformEF
             var valid = User.Authenticate(txtLoginEmail.Text, txtLoginPassword.Text);
             if(valid)
             {
-                MessageBox.Show("You have successfully logged in.");
+                var currentUser = User.GetCurrentUser();
+                MessageBox.Show("Hello " + currentUser.FirstName + ", you have successfully logged in to the system.");
                 // Logic for valid login...
             }
             else
