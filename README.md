@@ -3,6 +3,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 
 ## User.cs
 **Properties**
+
 |  Property | Type  |  Description |
 |---|---|---|
 | Id  |  `int` | A database-generated unique number which identifies the user  |
@@ -13,6 +14,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |  UserProfiles | any  | You can add more user profile data e.g. FirstName, LastName, BirthDate, Gender, Phone, Address, etc  |
 
 **Public Methods**
+
 |  Method |  Type | Description  |
 |---|---|---|
 | Create(User, strUserPassword)  |  `User` |  Creates new `User`. Return `null` if registration fails |
