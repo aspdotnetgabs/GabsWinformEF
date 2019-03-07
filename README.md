@@ -7,7 +7,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |---|---|---|
 | Id  |  `int` | A database-generated unique number which identifies the user  |
 |  Email | `string`  | Unique username or email  |
-|  Password Hash/Salt | `byte[]`  |  Encrypted password data [read only] |
+|  Password Hash/Salt | `byte[]`  |  Encrypted password data read only |
 |  LastLogin | Nullable `DateTime`  | The last successful login of the user  |
 | Roles  |  `string` | Comma-separated role(s) of a user  |
 |  UserProfiles | any  | You can add more user profile data e.g. FirstName, LastName, BirthDate, Gender, Phone, Address, etc  |
