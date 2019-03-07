@@ -13,7 +13,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 | Roles  |  `string` | Comma-separated role(s) of a user  |
 |  UserProfiles | any  | You can add more user profile data e.g. FirstName, LastName, BirthDate, Gender, Phone, Address, etc  |
 
-**Public Methods**
+**Public Static Methods**
 
 |  Method |  Type | Description  |
 |---|---|---|
