@@ -19,7 +19,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |---|---|---|
 | Create(User, strUserPassword)  |  `User` |  Creates new `User`. Return `null` if registration fails |
 |  Authenticate(userEmail, userPassword) |  `bool` | Returns `true` if user is valid  |
-|  Update(User, *optional* userPassword, *optional* newPassword) | `User`  | Updates the user. This also also serves as ChangePassword if userPass and newPass are filled  |
+|  Update(User, *optional* userPassword, *optional* newPassword) | `User`  | Updates the user. This also serves as ChangePassword if parameter userPass and newPass are not empty  |
 |  GetAll() | `List<User>`  | Returns all users  |
 |  GetUserById(id) | `User`  | Returns `User` by Id |
 |  GetUserByEmail(email) | `User`  | Returns `User` by email or username |
