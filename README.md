@@ -1,7 +1,7 @@
 # User Registration and Login 
 A very simple membership class library for your .NET/C# application with Entity Framework 6.
 
-## User.cs
+## [User.cs](https://raw.githubusercontent.com/aspdotnetgabs/GabsWinformEF/UserAuth/GabsWinformEF/Models/User.cs)
 **Properties**
 
 |  Property | Type  |  Description |
