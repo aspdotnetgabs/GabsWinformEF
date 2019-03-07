@@ -12,7 +12,7 @@ class User
     public byte[] PasswordSalt { get; set; }
     public DateTime? LastLogin { get; set; }
     public bool IsActive { get; set; } = true;
-    public string Roles { get; set; } = "user"; // comma-separated
+    public string Roles { get; set; } // comma-separated
     // Profile info
     public string FirstName { get; set; }
     public string LastName { get; set; }
