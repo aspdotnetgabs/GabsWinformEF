@@ -37,6 +37,12 @@ Then change the type of `_db` instance to your app `DbContext`.
 
      private static MyDbContext _db = new MyDbContext();
 
+In you DbContext class, add database mapping to User class
+
+     public DbSet<User> Users { get; set; }
+
+Execute `update-database`
+
 **Create New User**
 
     public void Register()
