@@ -39,40 +39,40 @@ Then change the type of `_db` instance to your app `DbContext`.
 
 **Create New User**
 
-        public void Register()
+    public void Register()
+    {
+        if (txtPassword.Text == txtVerifyPass.Text)
         {
-            if (txtPassword.Text == txtVerifyPass.Text)
+            User newUser = new User();
+            newUser.Email = txtEmail.Text;
+            newUser.FirstName = txtFirstName.Text;
+            newUser.LastName = txtLastName.Text;
+            newUser.Phone = txtPhone.Text;
+            var user = User.Create(newUser, txtPassword.Text);
+            if (user != null)
             {
-                User newUser = new User();
-                newUser.Email = txtEmail.Text;
-                newUser.FirstName = txtFirstName.Text;
-                newUser.LastName = txtLastName.Text;
-                newUser.Phone = txtPhone.Text;
-                var user = User.Create(newUser, txtPassword.Text);
-                if (user != null)
-                {
-                    MessageBox.Show("You have successfully registered. \nUserId: " + user.Id);
-                    // Logic for successful registration...
-                }
-                else
-                    MessageBox.Show("Registration failed.");
+                MessageBox.Show("You have successfully registered. \nUserId: " + user.Id);
+                // Logic for successful registration...
             }
             else
-                MessageBox.Show("Password is not the same.");
-
+                MessageBox.Show("Registration failed.");
         }
+        else
+            MessageBox.Show("Password is not the same.");
+
+    }
 
 **Login**
 
-            public void Login()
+    public void Login()
+    {
+        var valid = User.Authenticate(txtLoginEmail.Text, txtLoginPassword.Text);
+        if(valid)
         {
-            var valid = User.Authenticate(txtLoginEmail.Text, txtLoginPassword.Text);
-            if(valid)
-            {
-                var currentUser = User.GetCurrentUser();
-                MessageBox.Show("Hello " + currentUser.FirstName + ", you have successfully logged in to the system.");
-                // Do what you want to do as login is successful...
-            }
-            else
-                MessageBox.Show("Invalid email and/or password.");
+            var currentUser = User.GetCurrentUser();
+            MessageBox.Show("Hello " + currentUser.FirstName + ", you have successfully logged in to the system.");
+            // Do what you want to do as login is successful...
         }
+        else
+            MessageBox.Show("Invalid email and/or password.");
+    }
