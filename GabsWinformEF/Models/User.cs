@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GabsWinformEF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -77,6 +78,8 @@ class User
             return null;
 
         var userExists = _db.Users.Where(x => x.Email == user.Email).Count() > 0;
+
+
         if (userExists)
             return null;
 
@@ -163,6 +166,21 @@ class User
     public static User GetCurrentUser()
     {
         return CurrentUser;
+    }
+
+    public static string[] GetUserRoles(int userId)
+    {
+        var user = GetUserById(userId);
+        if (user != null)
+            return user.Roles.Split(',');
+        else
+            return new string[] { string.Empty };
+    }
+
+    public static string[] GetUserRoles(string userEmail)
+    {
+        var user = GetUserByEmail(userEmail);
+        return GetUserRoles(user.Id);
     }
 
     public static User Deactivate(string userEmail)
