@@ -29,7 +29,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |  Activate() | `User`  | Re-enables user  |
 
 ## Usage
-Copy paste **User.cs** in your project and set the username and password for the auto-generated default administrator. The code below automatically creates user with username, password, and role set to "admin".
+Copy paste **[User.cs](https://raw.githubusercontent.com/aspdotnetgabs/GabsWinformEF/UserAuth/GabsWinformEF/Models/User.cs)** in your project and set the username and password for the auto-generated default administrator. The code below automatically creates user with username, password, and role set to "admin".
 
     private const string DEFAULT_ADMIN_LOGIN = "admin";
 
