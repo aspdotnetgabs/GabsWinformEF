@@ -43,7 +43,7 @@ In your DbContext class, add database mapping to User class
 
 Execute `update-database`
 
-## Setup
+## Usage
 **Create New User**
 
     public void Register()
