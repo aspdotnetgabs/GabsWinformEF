@@ -30,12 +30,12 @@ class User
 
     public static bool Authenticate(string userEmail, string userPassword)
     {
-        CreateAdmin();
+        CreateAdmin(); // Comment out this line if you already have admin account
 
         if (string.IsNullOrWhiteSpace(userEmail) || string.IsNullOrWhiteSpace(userPassword))
             return false;
 
-        var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
+        var user = _db.Users.Where(x => x.Email == userEmail.Trim().ToLower()).FirstOrDefault();
         if (user == null)
             return false;
         if (!user.IsActive)
@@ -70,16 +70,16 @@ class User
         return true;
     }
 
-    public static User Create(User user, string userPassword)
+    public static User Create(User user, string userPassword, bool requiresActivation = false)
     {
         if (string.IsNullOrWhiteSpace(userPassword))
             return null;
         if (string.IsNullOrWhiteSpace(user.Email))
             return null;
 
+        user.Email = user.Email.Trim().ToLower();
+
         var userExists = _db.Users.Where(x => x.Email == user.Email).Count() > 0;
-
-
         if (userExists)
             return null;
 
@@ -90,7 +90,7 @@ class User
             user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userPassword));
         }
 
-        user.IsActive = true;
+        user.IsActive = !requiresActivation;
         _db.Users.Add(user);
         _db.SaveChanges();
 
@@ -99,15 +99,15 @@ class User
 
     private static void CreateAdmin()
     {
-        var hasUsers = _db.Users.Where(x=>x.Roles.Contains(DEFAULT_ADMIN_LOGIN)).Count() > 0;
-        if (!hasUsers)
+        var hasAdmin = _db.Users.Where(x=>x.Roles.Contains(DEFAULT_ADMIN_LOGIN)).Count() > 0;
+        if (!hasAdmin)
         {
             var newAdmin = new User
             {
                 Email = DEFAULT_ADMIN_LOGIN,
                 FirstName = "DefaultAdmin",
                 LastName = "Administrator",
-                Roles = DEFAULT_ADMIN_LOGIN + ",user"
+                Roles = DEFAULT_ADMIN_LOGIN
             };
             Create(newAdmin, DEFAULT_ADMIN_LOGIN);
         }

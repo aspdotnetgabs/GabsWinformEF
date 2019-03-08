@@ -17,8 +17,8 @@ A very simple membership class library for your .NET/C# application with Entity 
 
 |  Method |  Type | Description  |
 |---|---|---|
-| Create(User, strUserPassword)  |  `User` |  Creates new `User`. Return `null` if registration fails |
-|  Authenticate(userEmail, userPassword) |  `bool` | Returns `true` if login is valid  |
+| Create(User, strUserPassword, *optional* requiresActivation)  |  `User` |  Creates new `User`. Return `null` if registration fails. requiresActivation set to `true` needs account be activated by the Administrator |
+|  Authenticate(userEmail, userPassword)) |  `bool` | Returns `true` if login is valid  |
 |  Update(User, *optional* userPassword, *optional* newPassword) | `User`  | Updates the user. This also serves as ChangePassword if parameter userPass and newPass are not empty  |
 |  GetAll() | `List<User>`  | Returns all users  |
 |  GetUserById(id) | `User`  | Returns `User` by Id |
