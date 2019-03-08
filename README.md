@@ -44,7 +44,7 @@ In your DbContext class, add database mapping to User class
 Execute `update-database`
 
 ## Usage
-**Create New User**
+**Sign up**
 
     public void Register()
     {
@@ -69,7 +69,7 @@ Execute `update-database`
 
     }
 
-**Login**
+**Sign in**
 
     public void Login()
     {
