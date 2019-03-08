@@ -21,6 +21,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |  Authenticate(userEmail, userPassword)) |  `bool` | Returns `true` if login is valid  |
 |  Update(User, *optional* userPassword, *optional* newPassword) | `User`  | Updates the user. This also serves as ChangePassword if parameter userPass and newPass are not empty  |
 |  GetAll() | `List<User>`  | Returns all users  |
+|  GetAllUsersInRole(rolename) | `List<User>`  | Returns all users belong to a role  |
 |  GetUserById(id) | `User`  | Returns `User` by Id |
 |  GetUserByEmail(email) | `User`  | Returns `User` by email or username |
 |  GetCurrentUser() | `User`  | Returns currently logged-in user |

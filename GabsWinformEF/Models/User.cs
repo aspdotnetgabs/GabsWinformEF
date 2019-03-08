@@ -1,12 +1,17 @@
 ﻿using GabsWinformEF;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 class User
 {
     public int Id { get; set; }
     //Login info
+    [Index(IsUnique = true)]
+    [Required]
+    [StringLength(254)]
     public string Email { get; set; }
     public byte[] PasswordHash { get; set; }
     public byte[] PasswordSalt { get; set; }
@@ -148,6 +153,12 @@ class User
     public static List<User> GetAll()
     {
         var users = _db.Users.ToList();
+        return users;
+    }
+
+    public static List<User> GetAllUsersInRole(string role)
+    {
+        var users = _db.Users.ToList().Where(x=>x.Roles.Split(',').Contains(role)).ToList();
         return users;
     }
 
