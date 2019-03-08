@@ -28,7 +28,7 @@ A very simple membership class library for your .NET/C# application with Entity 
 |  Deactivate() | `User`  | Disables user from logging in  |
 |  Activate() | `User`  | Re-enables user  |
 
-## Usage
+## Setup
 Copy paste **[User.cs](https://raw.githubusercontent.com/aspdotnetgabs/GabsWinformEF/UserAuth/GabsWinformEF/Models/User.cs)** in your project and set the username and password for the auto-generated default administrator. The code below automatically creates user with username, password, and role set to "admin".
 
     private const string DEFAULT_ADMIN_LOGIN = "admin";
@@ -37,12 +37,13 @@ Then change the type of `_db` instance to your app `DbContext`.
 
      private static MyDbContext _db = new MyDbContext();
 
-In you DbContext class, add database mapping to User class
+In your DbContext class, add database mapping to User class
 
      public DbSet<User> Users { get; set; }
 
 Execute `update-database`
 
+## Setup
 **Create New User**
 
     public void Register()
