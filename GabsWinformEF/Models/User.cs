@@ -22,7 +22,7 @@ class User
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Phone { get; set; }
-    // Add more user profile field here...
+    // Add more user profile field here... 
 
 
     // Change this to your desired default admin login and password
