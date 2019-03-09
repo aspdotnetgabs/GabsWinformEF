@@ -41,7 +41,7 @@ namespace GabsWinformEF
                 newUser.FirstName = txtFirstName.Text;
                 newUser.LastName = txtLastName.Text;
                 newUser.Phone = txtPhone.Text;
-                var user = User.Create(newUser, txtPassword.Text);
+                var user = User.Create(newUser, txtPassword.Text, true);
                 if (user != null)
                 {
                     foreach (var textbox in tabRegister.Controls.OfType<TextBox>())
