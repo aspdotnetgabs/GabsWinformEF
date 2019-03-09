@@ -26,7 +26,7 @@ namespace GabsWinformEF
                 var currentUser = User.GetCurrentUser();
                 MessageBox.Show("Hello " + currentUser.FirstName + ", you have successfully logged in to the system.");
                 // Logic for valid login...
-
+                new Form1().Show();
             }
             else
                 MessageBox.Show("Invalid email and/or password.");

@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace GabsWinformEF.Models
 {
-    class MovieReservation
+    class Order
     {
         public int Id { get; set; }
         public string CustomerName { get; set; }
+        public string CustomerAddress { get; set; }
         public string CustomerContact { get; set; }
-        public int MovieId { get; set; }
-        public string MovieTitle { get; set; }
-        public DateTime ScreeningDate { get; set; }
-        public int NumberOfSeats { get; set; }
+        public int TransactionBy { get; set; } // User Id of logged-in cashier
     }
-
 }
