@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-class User
+public partial class User
 {
     public int Id { get; set; }
     //Login info
