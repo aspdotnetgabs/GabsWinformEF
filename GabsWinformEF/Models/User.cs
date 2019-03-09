@@ -104,8 +104,7 @@ public partial class User
 
     private static void CreateAdmin()
     {
-        var hasAdmin = _db.Users.Where(x => x.Roles == DEFAULT_ADMIN_LOGIN).Count() > 0;
-        //var hasAdmin = _db.Database.SqlQuery<int>($"Select 1 from Users where roles='{DEFAULT_ADMIN_LOGIN}'").Any();
+        var hasAdmin = _db.Users.Where(x => x.Roles == DEFAULT_ADMIN_LOGIN).Any();
         if (!hasAdmin)
         {
             var newAdmin = new User
