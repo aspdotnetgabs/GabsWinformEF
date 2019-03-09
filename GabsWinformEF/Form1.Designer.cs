@@ -111,6 +111,7 @@
             this.txtChessy.Name = "txtChessy";
             this.txtChessy.Size = new System.Drawing.Size(42, 20);
             this.txtChessy.TabIndex = 7;
+            this.txtChessy.Text = "1";
             // 
             // txtMeaty
             // 
@@ -118,6 +119,7 @@
             this.txtMeaty.Name = "txtMeaty";
             this.txtMeaty.Size = new System.Drawing.Size(42, 20);
             this.txtMeaty.TabIndex = 8;
+            this.txtMeaty.Text = "1";
             // 
             // textBox5
             // 
@@ -125,6 +127,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(42, 20);
             this.textBox5.TabIndex = 9;
+            this.textBox5.Text = "1";
             // 
             // button1
             // 
