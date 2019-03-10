@@ -28,7 +28,7 @@ public partial class User
     // Change this to your desired default admin login and password
     private const string DEFAULT_ADMIN_LOGIN = "admin";
     // Change this to your DbContext class
-    private static MyDbContext _db = new MyDbContext();
+    private static StudentAppDbContext _db = new StudentAppDbContext();
 
     #region UserRepository
     private static User CurrentUser = null;

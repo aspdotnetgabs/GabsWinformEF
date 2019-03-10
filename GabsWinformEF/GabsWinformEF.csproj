@@ -83,7 +83,10 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudyLoad.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />
