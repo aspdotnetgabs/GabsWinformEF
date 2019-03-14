@@ -49,6 +49,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRaffleDraw = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.tabRegister.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // tabLogin
             // 
+            this.tabLogin.Controls.Add(this.btnRaffleDraw);
             this.tabLogin.Controls.Add(this.btnLogin);
             this.tabLogin.Controls.Add(this.txtLoginPassword);
             this.tabLogin.Controls.Add(this.label8);
@@ -253,6 +255,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Email";
             // 
+            // btnRaffleDraw
+            // 
+            this.btnRaffleDraw.Location = new System.Drawing.Point(112, 214);
+            this.btnRaffleDraw.Name = "btnRaffleDraw";
+            this.btnRaffleDraw.Size = new System.Drawing.Size(136, 54);
+            this.btnRaffleDraw.TabIndex = 5;
+            this.btnRaffleDraw.Text = "RAFFLE DRAW";
+            this.btnRaffleDraw.UseVisualStyleBackColor = true;
+            this.btnRaffleDraw.Click += new System.EventHandler(this.btnRaffleDraw_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,5 +306,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRaffleDraw;
     }
 }

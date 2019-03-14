@@ -59,6 +59,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Faker.NET45, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Faker.Net.1.1.1\lib\net452\Faker.NET45.dll</HintPath>
+    </Reference>
     <Reference Include="JetEntityFrameworkProvider, Version=6.0.0.0, Culture=neutral, PublicKeyToken=756cf6beb8fe7b41, processorArchitecture=x86">
       <HintPath>packages\JetEntityFrameworkProvider.6.1.4\lib\JetEntityFrameworkProvider.dll</HintPath>
     </Reference>
@@ -83,7 +86,6 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Program.cs" />

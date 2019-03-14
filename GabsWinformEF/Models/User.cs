@@ -27,6 +27,10 @@ public partial class User
 
     // Change this to your desired default admin login and password
     private const string DEFAULT_ADMIN_LOGIN = "admin";
+    // Change this to your desired password for fake users
+    private const string DEFAULT_FAKEUSER_PASSWORD = "fakepass123";
+    // How many fake user account to be created?
+    private const int DEFAULT_FAKEUSER_COUNT = 10;
     // Change this to your DbContext class
     private static MyDbContext _db = new MyDbContext();
 
@@ -115,6 +119,9 @@ public partial class User
                 Roles = DEFAULT_ADMIN_LOGIN
             };
             Create(newAdmin, DEFAULT_ADMIN_LOGIN);
+
+            // PM> Install-Package Faker.Net
+            CreateFakeUsers();
         }
     }
 
@@ -223,6 +230,41 @@ public partial class User
             return null;
 
     }
+
+    // PM> Install-Package Faker.Net
+    public static void CreateFakeUsers(string fakePassword = DEFAULT_FAKEUSER_PASSWORD, int howMany = DEFAULT_FAKEUSER_COUNT, bool requiresActivation = false)
+    {
+        try
+        {
+            var fakeUsers = new List<User>();
+            for (int i = 0; i < howMany; i++)
+            {
+                var newFakeUser = new User();
+                newFakeUser.FirstName = Faker.Name.First();
+                newFakeUser.LastName = Faker.Name.Last();
+                newFakeUser.Phone = Faker.Phone.Number();
+                newFakeUser.Roles = "fakeuser";
+                newFakeUser.IsActive = !requiresActivation;
+
+                newFakeUser.Email = newFakeUser.FirstName.ToLower()
+                    + Faker.RandomNumber.Next(10, 99)
+                    + "@" + Faker.Internet.DomainName();
+
+                // Create PasswordHash
+                using (var hmac = new System.Security.Cryptography.HMACSHA512())
+                {
+                    newFakeUser.PasswordSalt = hmac.Key;
+                    newFakeUser.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(fakePassword));
+                }
+                fakeUsers.Add(newFakeUser);
+            }
+            _db.Users.AddRange(fakeUsers);
+            _db.SaveChanges();
+        }
+        catch { }
+
+    }
+
     #endregion
 
 }

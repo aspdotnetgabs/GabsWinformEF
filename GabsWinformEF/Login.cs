@@ -1,5 +1,4 @@
-﻿using GabsWinformEF.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Faker;
 
 namespace GabsWinformEF
 {
@@ -57,6 +57,41 @@ namespace GabsWinformEF
             else
                 MessageBox.Show("Password is not the same.");
 
+        }
+
+        // PM> Install-Package Faker.Net
+        void CreateFakeUser(int howMany = 20)
+        {
+            for (int i = 0; i < howMany; i++)
+            {
+                var newUser = new User();
+                newUser.FirstName = Faker.Name.First();
+                newUser.LastName = Faker.Name.Last();
+                newUser.Phone = Faker.Phone.Number();
+                newUser.Roles = "fakeuser";
+                newUser.Email = newUser.FirstName
+                    + Faker.RandomNumber.Next(10, 999)
+                    + "@"
+                    + Faker.Internet.DomainName();
+                string password = newUser.FirstName + "123";
+                User.Create(newUser, password);
+            }
+        }
+
+        private void btnRaffleDraw_Click(object sender, EventArgs e)
+        {
+            MyDbContext _db = new MyDbContext();
+            // List is also an array!
+            List<User> userEntries = _db.Users.ToList(); 
+            // Create random integer from 0 to total number of Users in the Db
+            var rnd = new Random();
+            int winningIndex = rnd.Next(0, userEntries.Count);
+            // Get the winnder by index. userEntries after all is an array!
+            User winningUser = userEntries[winningIndex];
+            // Announce the winnder in MessageBox!
+            MessageBox.Show("And the winner is... \n\n" 
+                + winningUser.FirstName + " " 
+                + winningUser.LastName + "!!!");                      
         }
     }
 }
