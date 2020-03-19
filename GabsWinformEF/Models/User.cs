@@ -1,46 +1,42 @@
-﻿using GabsWinformEF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
+[Table("_Users")]
 public partial class User
 {
+    // Change this to your desired default admin login and password
+    public const string DEFAULT_ADMIN_LOGIN = "admin";
+    // Change this to your DbContext class
+    private static YourDbContext _db = new YourDbContext();
+
+
+    #region UserAccountRepository
     public int Id { get; set; }
     //Login info
-    [Index(IsUnique = true)]
     [Required]
     [StringLength(254)]
-    public string Email { get; set; }
+    public string UserName { get; set; }
     public byte[] PasswordHash { get; set; }
     public byte[] PasswordSalt { get; set; }
+    public DateTime CreatedOn { get; set; }
     public DateTime? LastLogin { get; set; }
-    public bool IsActive { get; set; } = true;
+    public bool IsActive { get; set; }
     public string Roles { get; set; } // comma-separated
-    // Profile info
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Phone { get; set; }
-    // Add more user profile field here... 
 
 
-    // Change this to your desired default admin login and password
-    private const string DEFAULT_ADMIN_LOGIN = "admin";
-    // Change this to your DbContext class
-    private static MyDbContext _db = new MyDbContext();
+    private static User currentUser = null;
 
-    #region UserRepository
-    private static User CurrentUser = null;
-
-    public static bool Authenticate(string userEmail, string userPassword)
+    public static bool Authenticate(string userName, string userPassword)
     {
         CreateAdmin(); // Comment out this line if you already have admin account
 
-        if (string.IsNullOrWhiteSpace(userEmail) || string.IsNullOrWhiteSpace(userPassword))
+        if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(userPassword))
             return false;
 
-        var user = _db.Users.Where(x => x.Email == userEmail.Trim().ToLower()).FirstOrDefault();
+        var user = _db.Users.Where(x => x.UserName == userName.Trim().ToLower()).FirstOrDefault();
         if (user == null)
             return false;
         if (!user.IsActive)
@@ -52,7 +48,7 @@ public partial class User
             user.LastLogin = DateTime.Now;
             _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
-            CurrentUser = user; // Set current user
+            currentUser = user; // Set current user
             return true;
         }
 
@@ -75,16 +71,17 @@ public partial class User
         return true;
     }
 
-    public static User Create(User user, string userPassword, bool requiresActivation = false)
+    public static User Create(string userName, string userPassword, string userRoles = "", bool requiresActivation = false)
     {
         if (string.IsNullOrWhiteSpace(userPassword))
             return null;
-        if (string.IsNullOrWhiteSpace(user.Email))
+        if (string.IsNullOrWhiteSpace(userName))
             return null;
 
-        user.Email = user.Email.Trim().ToLower();
+        var user = new User();
+        user.UserName = userName.Trim().ToLower();
 
-        var userExists = _db.Users.Where(x => x.Email == user.Email).Count() > 0;
+        var userExists = _db.Users.Where(x => x.UserName == user.UserName).Count() > 0;
         if (userExists)
             return null;
 
@@ -95,7 +92,10 @@ public partial class User
             user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userPassword));
         }
 
+        user.Roles = userRoles;
+        user.CreatedOn = DateTime.Now;
         user.IsActive = !requiresActivation;
+
         _db.Users.Add(user);
         _db.SaveChanges();
 
@@ -107,47 +107,38 @@ public partial class User
         var hasAdmin = _db.Users.Where(x => x.Roles == DEFAULT_ADMIN_LOGIN).Any();
         if (!hasAdmin)
         {
-            var newAdmin = new User
-            {
-                Email = DEFAULT_ADMIN_LOGIN,
-                FirstName = "DefaultAdmin",
-                LastName = "Administrator",
-                Roles = DEFAULT_ADMIN_LOGIN
-            };
-            Create(newAdmin, DEFAULT_ADMIN_LOGIN);
+            Create(DEFAULT_ADMIN_LOGIN, DEFAULT_ADMIN_LOGIN, DEFAULT_ADMIN_LOGIN);
         }
     }
 
-    public static User Update(User updateUser, string userPassword = "", string newPassword = "")
+    public static bool ChangePassword(string userName, string userPassword = "", string newPassword = "", bool forceChange = false)
     {
-        var user = _db.Users.Where(x => x.Email == updateUser.Email).FirstOrDefault();
+        if (string.IsNullOrWhiteSpace(newPassword))
+            return false;
+
+        if (forceChange == false && string.IsNullOrWhiteSpace(userPassword))
+            return false;
+
+        var user = _db.Users.Where(x => x.UserName == userName.Trim()).FirstOrDefault();
         if (user == null)
-            return null;
-        else
-        {
-            user.FirstName = updateUser.FirstName;
-            user.LastName = updateUser.LastName;
-            user.Phone = updateUser.Phone;
-        }
+            return false;
 
-        if (!string.IsNullOrWhiteSpace(userPassword) || !string.IsNullOrWhiteSpace(newPassword))
+        var validPassword = !forceChange ? VerifyPasswordHash(userPassword, user.PasswordSalt, user.PasswordHash) : true;
+        if (validPassword)
         {
-            var validPassword = VerifyPasswordHash(userPassword, user.PasswordSalt, user.PasswordHash);
-            if (validPassword)
+            // Overwrite with new PasswordHash
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
-                // Overwrite with new PasswordHash
-                using (var hmac = new System.Security.Cryptography.HMACSHA512())
-                {
-                    user.PasswordSalt = hmac.Key;
-                    user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userPassword));
-                }
+                user.PasswordSalt = hmac.Key;
+                user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(newPassword));
             }
+
+            _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            return true;
         }
-
-        _db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-        _db.SaveChanges();
-
-        return user;
+        else
+            return false;
     }
 
     public static List<User> GetAll()
@@ -158,7 +149,7 @@ public partial class User
 
     public static List<User> GetAllUsersInRole(string role)
     {
-        var users = _db.Users.ToList().Where(x=>x.Roles.Split(',').Contains(role)).ToList();
+        var users = _db.Users.ToList().Where(x => x.Roles.Split(',').Contains(role)).ToList();
         return users;
     }
 
@@ -168,15 +159,21 @@ public partial class User
         return user;
     }
 
-    public static User GetUserByEmail(string userEmail)
+    public static User GetUserByUserName(string userName)
     {
-        var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
+        var user = _db.Users.Where(x => x.UserName.ToLower() == userName.ToLower()).FirstOrDefault();
         return user;
     }
 
     public static User GetCurrentUser()
     {
-        return CurrentUser;
+        if(currentUser != null)
+        {
+            currentUser.PasswordHash = null;
+            currentUser.PasswordSalt = null;
+        }
+
+        return currentUser;
     }
 
     public static string[] GetUserRoles(int userId)
@@ -188,15 +185,15 @@ public partial class User
             return new string[] { string.Empty };
     }
 
-    public static string[] GetUserRoles(string userEmail)
+    public static string[] GetUserRoles(string userName)
     {
-        var user = GetUserByEmail(userEmail);
+        var user = GetUserByUserName(userName);
         return GetUserRoles(user.Id);
     }
 
-    public static User Deactivate(string userEmail)
+    public static User Deactivate(string userName)
     {
-        var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
+        var user = _db.Users.Where(x => x.UserName == userName).FirstOrDefault();
         if (user != null)
         {
             user.IsActive = false;
@@ -206,12 +203,11 @@ public partial class User
         }
         else
             return null;
-
     }
 
-    public static User Activate(string userEmail)
+    public static User Activate(string userName)
     {
-        var user = _db.Users.Where(x => x.Email == userEmail).FirstOrDefault();
+        var user = _db.Users.Where(x => x.UserName == userName).FirstOrDefault();
         if (user != null)
         {
             user.IsActive = true;
@@ -221,8 +217,6 @@ public partial class User
         }
         else
             return null;
-
     }
     #endregion
-
 }
